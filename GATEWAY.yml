@@ -20,7 +20,7 @@ spring:
       routes:
       #------------
       - id: jwt
-        uri: lb://JWT
+        uri: lb://jwt
         predicates:
         - Path=/jwt/**
         filters:
