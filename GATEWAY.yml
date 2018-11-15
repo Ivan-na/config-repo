@@ -19,8 +19,8 @@ spring:
           lowerCaseServiceId: true
       routes:
       #------------
-      - id: jwt
-        uri: lb://jwt
+      - id: JWT
+        uri: lb://JWT
         predicates:
         - Path=/jwt/**
         filters:
