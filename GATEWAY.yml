@@ -1,8 +1,14 @@
 server:
   port: 8080
 eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
   client:
-    serviceUrl:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
      defaultZone: http://localhost:8765/eureka/
 spring:
   cloud:
@@ -12,10 +18,13 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
+      #------------
       - id: jwt
-        uri: http://192.168.2.1:8333/
+        uri: lb://JWT
         predicates:
-        - Path=/JWT/**
+        - Path=/jwt/**
+        filters:
+        - StripPrefix= 1
 #    consul:
 #      host: 172.17.0.2
 #      port: 8500
