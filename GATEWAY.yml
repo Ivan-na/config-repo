@@ -2,12 +2,12 @@ server:
   port: 8080
 eureka:
   instance:
-    prefer-ip-address: true
+    #prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
   client:
-    register-with-eureka: true
-    fetch-registry: false
+    #register-with-eureka: false
+    #fetch-registry: false
     service-url:
      defaultZone: http://localhost:8765/eureka/
 spring:
@@ -16,15 +16,17 @@ spring:
       discovery:
         locator:
           enabled: true
-          lowerCaseServiceId: true
+        lower-case-service-id: true
       routes:
       #------------
-      - id: JWT
-        uri: lb://JWT
+      - id: jwt-auth
+        uri: lb://JWT-AUTH
         predicates:
-        - Path=/jwt/**
+        - Path=/jwt-auth/**
         filters:
         - StripPrefix= 1
+#filters:
+#- StripPrefix= 1
 #    consul:
 #      host: 172.17.0.2
 #      port: 8500

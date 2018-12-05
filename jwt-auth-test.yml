@@ -1,5 +1,5 @@
 server:
-  port: 8333
+  port: 8334
 eureka:
   client:
     serviceUrl:
@@ -10,4 +10,4 @@ management:
       exposure:
         include: "*"
 env:
-  tag: 3366
+  tag: test

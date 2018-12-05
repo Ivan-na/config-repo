@@ -1,0 +1,13 @@
+server:
+  port: 8333
+eureka:
+  client:
+    serviceUrl:
+     defaultZone: http://localhost:8765/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+env:
+  tag: 999
